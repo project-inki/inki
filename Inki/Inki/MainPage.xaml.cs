@@ -51,7 +51,7 @@ namespace Inki
             }
         }
 
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavigationView_SelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
             {
@@ -59,7 +59,7 @@ namespace Inki
             }
             else
             {
-                var selectedItem = (NavigationViewItem)args.SelectedItem;
+                var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
                 this.contentFrame.Navigate(Type.GetType("Inki.Pages." + selectedItemTag));
             }

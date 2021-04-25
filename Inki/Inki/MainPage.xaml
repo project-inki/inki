@@ -6,7 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     <!--
     <Grid>
         <Grid.RowDefinitions>
@@ -22,11 +24,11 @@
         <InkCanvas x:Name="inkCanvas" Grid.Column="1" Grid.Row="1"/>
     </Grid>
     -->
-    <NavigationView SelectionChanged="NavigationView_SelectionChanged">
-        <NavigationView.MenuItems>
-            <NavigationViewItem Icon="Edit" Tag="EditorNavigationPage">Editor</NavigationViewItem>
-            <NavigationViewItem Icon="NewFolder" Tag="FilesPage">Files</NavigationViewItem>
-        </NavigationView.MenuItems>
+    <muxc:NavigationView SelectionChanged="NavigationView_SelectionChanged">
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem Icon="Edit" Tag="EditorNavigationPage">Editor</muxc:NavigationViewItem>
+            <muxc:NavigationViewItem Icon="NewFolder" Tag="FilesPage">Files</muxc:NavigationViewItem>
+        </muxc:NavigationView.MenuItems>
         <Frame Margin="0,0,0,0" x:Name="contentFrame"/>
-    </NavigationView>
+    </muxc:NavigationView>
 </Page>
