@@ -1,0 +1,118 @@
+﻿<Page
+    x:Class="Inki.View.EditorNavigationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Inki.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Required">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel Grid.ColumnSpan="2">
+            <InkToolbar x:Name="inkToolBar">
+            </InkToolbar>
+            <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" IsSticky="True" RelativePanel.AlignRightWithPanel="True">
+                <AppBarButton Icon="Save" Label="Save" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="S"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Undo" Label="Undo" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="Z"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Redo" Label="Redo" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Shift, Control" Key="Z"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Share" Label="Export" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="E"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Copy" Label="Copy" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="C"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Paste" Label="Paste" Width="40">
+                    <AppBarButton.KeyboardAccelerators>
+                        <KeyboardAccelerator Modifiers="Control" Key="V"/>
+                    </AppBarButton.KeyboardAccelerators>
+                </AppBarButton>
+                <AppBarButton Icon="Microphone" Label="Microphone" Width="40" />
+                <AppBarButton Icon="Camera" Label="Camera" Width="40" />
+                <AppBarButton Icon="Attach" Label="Attachments" Width="40" />
+                <AppBarButton Icon="TwoPage" Label="Split" Width="40">
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Icon="DockLeft" Text="Horizontal Split" Click="HorizontalSplitButtonClick"/>
+                            <MenuFlyoutItem Icon="DockBottom" Text="Vertical Split" Click="VerticalSplitButtonClick"/>
+                            <MenuFlyoutItem Icon="Document" Text="No Split" Click="NoSplitButtonClick"/>
+                            <MenuFlyoutItem Icon="Switch" Text="Adjust Split Ratio" Click="AdjustSplitRatioClick">
+                                <FlyoutBase.AttachedFlyout>
+                                    <Flyout>
+                                        <Button>abc</Button>
+                                    </Flyout>
+                                </FlyoutBase.AttachedFlyout>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Icon="Setting" Label="Settings">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="I" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton Icon="Add" Label="Button 1">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="N" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton Icon="Delete" Label="Button 2">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Key="Delete" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarSeparator />
+                    <AppBarButton Icon="FontDecrease" Label="Button 3">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="Subtract" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                    <AppBarButton Icon="FontIncrease" Label="Button 4">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="Add" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+        </RelativePanel>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="primaryGridRow" Height="*"/>
+                <RowDefinition x:Name="secondaryGridRow" Height="0"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="primaryGridColumn" Width="*"/>
+                <ColumnDefinition x:Name="secondaryGridColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Frame x:Name="primaryEditor" Grid.Column="0" Grid.Row="0" 
+                   BorderThickness="1" 
+                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"/>
+            <Frame x:Name="secondaryEditor" Grid.Column="1" 
+                   BorderThickness="1" 
+                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"/>
+        </Grid>
+    </Grid>
+</Page>

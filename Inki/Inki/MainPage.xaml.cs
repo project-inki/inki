@@ -55,13 +55,13 @@ namespace Inki
         {
             if (args.IsSettingsSelected)
             {
-                this.contentFrame.Navigate(typeof(Inki.Pages.SettingsPage));
+                this.contentFrame.Navigate(typeof(Inki.View.SettingsPage));
             }
             else
             {
                 var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
                 string selectedItemTag = ((string)selectedItem.Tag);
-                this.contentFrame.Navigate(Type.GetType("Inki.Pages." + selectedItemTag));
+                this.contentFrame.Navigate(Type.GetType("Inki.View." + selectedItemTag));
             }
         }
     }
