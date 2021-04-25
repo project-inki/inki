@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Inki.Models
 {
-    class EditorLayoutModel
+    public class EditorLayoutModel
     {
         public enum EditorSplitStyle { None = 0, Horizontal = 1, Vertical = 2 };
 

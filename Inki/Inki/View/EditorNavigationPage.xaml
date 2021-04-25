@@ -58,14 +58,21 @@
                             <MenuFlyoutItem Icon="DockLeft" Text="Horizontal Split" Click="HorizontalSplitButtonClick"/>
                             <MenuFlyoutItem Icon="DockBottom" Text="Vertical Split" Click="VerticalSplitButtonClick"/>
                             <MenuFlyoutItem Icon="Document" Text="No Split" Click="NoSplitButtonClick"/>
-                            <MenuFlyoutItem Icon="Switch" Text="Adjust Split Ratio" Click="AdjustSplitRatioClick">
-                                <FlyoutBase.AttachedFlyout>
-                                    <Flyout>
-                                        <Button>abc</Button>
-                                    </Flyout>
-                                </FlyoutBase.AttachedFlyout>
-                            </MenuFlyoutItem>
                         </MenuFlyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+                <AppBarButton Icon="Switch" Label="Adjust Split Ratio" Width="40">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Drag to adjust Split Ratio</TextBlock>
+                                <Slider AutomationProperties.Name="Slider with ticks" 
+                                        x:Name="slider" 
+                                        TickFrequency="10" Width="300" 
+                                        Value="50" Minimum="0" Maximum="100" 
+                                        TickPlacement="Outside" ValueChanged="slider_ValueChanged"/>
+                            </StackPanel>
+                        </Flyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
                 <CommandBar.SecondaryCommands>

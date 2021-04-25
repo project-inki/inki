@@ -26,12 +26,13 @@ namespace Inki.View
     public sealed partial class EditorNavigationPage : Page
     {
 
-        private EditorLayoutModel editorLayout;
+        public EditorLayoutModel editorLayout;
 
         public EditorNavigationPage()
         {
             this.InitializeComponent();
             this.editorLayout = LayoutCacheReader.readEditorLayout();
+            this.slider.Value = this.editorLayout.splitRatio * 100;
             this.loadLayout();
         }
 
@@ -132,9 +133,11 @@ namespace Inki.View
             this.updateLayout();
         }
 
-        private void AdjustSplitRatioClick(object sender, RoutedEventArgs e)
+        private void slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
-            
+            if (this.editorLayout == null) return;
+            this.editorLayout.splitRatio = e.NewValue / 100.0;
+            this.updateLayout();
         }
     }
 }
