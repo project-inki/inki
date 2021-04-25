@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
+using Windows.UI.Input.Inking;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,9 +24,45 @@ namespace Inki
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private InkPresenter _inkPresenter;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            //_inkPresenter = inkCanvas.InkPresenter;
+            //_inkPresenter.InputDeviceTypes =
+            //    CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Pen | CoreInputDeviceTypes.Touch;
+            //UpdatePen();
+        }
+
+        private void UpdatePen()
+        {
+            if (_inkPresenter != null)
+            {
+                var defaultAttributes = _inkPresenter.CopyDefaultDrawingAttributes();
+
+                // If we are using a pencil, changing pentip is not allowed!
+                if (defaultAttributes.Kind == InkDrawingAttributesKind.Default)
+                {
+                    _inkPresenter.UpdateDefaultDrawingAttributes(defaultAttributes);
+                }
+            }
+        }
+
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            if (args.IsSettingsSelected)
+            {
+                this.contentFrame.Navigate(typeof(Inki.Pages.SettingsPage));
+            }
+            else
+            {
+                var selectedItem = (NavigationViewItem)args.SelectedItem;
+                string selectedItemTag = ((string)selectedItem.Tag);
+                this.contentFrame.Navigate(Type.GetType("Inki.Pages." + selectedItemTag));
+            }
         }
     }
 }

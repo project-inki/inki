@@ -7,8 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <!--
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="MenuButton" Height="Auto" Width="Auto" HorizontalAlignment="Center">=</Button>
+        <InkToolbar TargetInkCanvas="{x:Bind inkCanvas}" Grid.Column="1" Height="Auto"/>
+        <InkCanvas x:Name="inkCanvas" Grid.Column="1" Grid.Row="1"/>
     </Grid>
+    -->
+    <NavigationView SelectionChanged="NavigationView_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Edit" Tag="EditorNavigationPage">Editor</NavigationViewItem>
+            <NavigationViewItem Icon="NewFolder" Tag="FilesPage">Files</NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Frame Margin="0,0,0,0" x:Name="contentFrame"/>
+    </NavigationView>
 </Page>
