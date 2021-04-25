@@ -1,5 +1,6 @@
 ﻿using Inki.Models;
 using Inki.Vendor;
+using Inki.View.Helper;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,14 +29,32 @@ namespace Inki.View
 
         public EditorLayoutModel editorLayout;
 
+        /******** Test Code Start ********/
+        public EditorInkCanvasPage primaryEditorPage;
+        public EditorInkCanvasPage secondaryEditorPage;
+        /********  Test Code End  ********/
+
         public EditorNavigationPage()
         {
             this.InitializeComponent();
             this.editorLayout = LayoutCacheReader.readEditorLayout();
             this.slider.Value = this.editorLayout.splitRatio * 100;
             this.loadLayout();
+
+            /******** Test Code Start ********/
+            primaryEditor.Navigate(typeof(EditorInkCanvasPage));
+            secondaryEditor.Navigate(typeof(EditorInkCanvasPage));
+            this.primaryEditorPage = (EditorInkCanvasPage)primaryEditor.Content;
+            this.secondaryEditorPage = (EditorInkCanvasPage)secondaryEditor.Content;
+            this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
+            /********  Test Code End  ********/
         }
 
+        #region 分屏封装处理
+
+        /// <summary>
+        /// 加载当前布局
+        /// </summary>
         private void loadLayout()
         {
             switch(this.editorLayout.splitStyle)
@@ -52,6 +71,9 @@ namespace Inki.View
             }
         }
 
+        /// <summary>
+        /// 加载并保存当前布局
+        /// </summary>
         private void updateLayout()
         {
             this.loadLayout();
@@ -103,17 +125,9 @@ namespace Inki.View
             this.secondaryGridRow.Height = new GridLength(0, GridUnitType.Star);
         }
 
-        private async void DisplayNoWifiDialog()
-        {
-            ContentDialog noWifiDialog = new ContentDialog()
-            {
-                Title = "No wifi connection",
-                Content = "Check connection and try again.",
-                CloseButtonText = "Ok"
-            };
+        #endregion
 
-            await noWifiDialog.ShowAsync();
-        }
+        #region 分屏UI处理
 
         private void HorizontalSplitButtonClick(object sender, RoutedEventArgs e)
         {
@@ -138,6 +152,64 @@ namespace Inki.View
             if (this.editorLayout == null) return;
             this.editorLayout.splitRatio = e.NewValue / 100.0;
             this.updateLayout();
+        }
+
+        #endregion
+
+        private async void primaryEditor_FocusEngaged(Control sender, FocusEngagedEventArgs args)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("primary focused").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void secondaryEditor_FocusEngaged(Control sender, FocusEngagedEventArgs args)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("secondary focused").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void primaryEditor_GotFocus(object sender, RoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("primary got focused").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void secondaryEditor_GotFocus(object sender, RoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("secondary got focused").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void primaryEditor_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("primary pointer pressed").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void secondaryEditor_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("secondary pointer pressed").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void primaryEditor_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("primary tapped").ShowAsync();
+            /********  Test Code End  ********/
+        }
+
+        private async void secondaryEditor_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            /******** Test Code Start ********/
+            await new ConsoleDialog("secondary tapped").ShowAsync();
+            /********  Test Code End  ********/
         }
     }
 }

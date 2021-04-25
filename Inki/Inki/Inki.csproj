@@ -123,6 +123,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EditorLayoutModel.cs" />
+    <Compile Include="Models\NotebookFileModel.cs" />
+    <Compile Include="Models\NotebookInkModel.cs" />
+    <Compile Include="Models\NotebookModel.cs" />
     <Compile Include="View\EditorBlankPage.xaml.cs">
       <DependentUpon>EditorBlankPage.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,9 @@
     </Compile>
     <Compile Include="View\FilesPage.xaml.cs">
       <DependentUpon>FilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Helper\ConsoleDialog.xaml.cs">
+      <DependentUpon>ConsoleDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -185,6 +191,10 @@
     <Page Include="View\FilesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Helper\ConsoleDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -116,10 +116,12 @@
             </Grid.ColumnDefinitions>
             <Frame x:Name="primaryEditor" Grid.Column="0" Grid.Row="0" 
                    BorderThickness="1" 
-                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"/>
+                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"
+                   FocusEngaged="primaryEditor_FocusEngaged" GotFocus="primaryEditor_GotFocus" PointerPressed="primaryEditor_PointerPressed" Tapped="primaryEditor_Tapped"/>
             <Frame x:Name="secondaryEditor" Grid.Column="1" 
                    BorderThickness="1" 
-                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"/>
+                   BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}"
+                   FocusEngaged="secondaryEditor_FocusEngaged" GotFocus="secondaryEditor_GotFocus" PointerPressed="secondaryEditor_PointerPressed" Tapped="secondaryEditor_Tapped"/>
         </Grid>
     </Grid>
 </Page>

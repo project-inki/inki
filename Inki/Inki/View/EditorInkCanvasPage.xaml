@@ -10,6 +10,9 @@
     NavigationCacheMode="Required">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <InkCanvas x:Name="inkCanvas" x:FieldModifier="public" Grid.Row="0"/>
     </Grid>
 </Page>
