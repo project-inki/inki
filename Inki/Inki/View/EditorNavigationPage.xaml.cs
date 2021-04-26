@@ -8,6 +8,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.Core;
+using Windows.UI.Input.Inking;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,10 +32,8 @@ namespace Inki.View
 
         public EditorLayoutModel editorLayout;
 
-        /******** Test Code Start ********/
         public EditorInkCanvasPage primaryEditorPage;
         public EditorInkCanvasPage secondaryEditorPage;
-        /********  Test Code End  ********/
 
         public EditorNavigationPage()
         {
@@ -43,8 +44,14 @@ namespace Inki.View
 
             primaryEditor.Navigate(typeof(EditorInkCanvasPage));
             secondaryEditor.Navigate(typeof(EditorInkCanvasPage));
+
             this.primaryEditorPage = (EditorInkCanvasPage)primaryEditor.Content;
             this.secondaryEditorPage = (EditorInkCanvasPage)secondaryEditor.Content;
+
+            this.primaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered;
+            this.secondaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered1;
+
+            // InkToolBar初始化绑定到Primary (Border颜色已在Xaml中设置)
             this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
         }
 
@@ -83,10 +90,10 @@ namespace Inki.View
         /// </summary>
         private void setLeftRightSplitLayout(double splitRatio)
         {
-            this.primaryEditor.SetValue(Grid.ColumnProperty, 0);
-            this.secondaryEditor.SetValue(Grid.ColumnProperty, 1);
-            this.primaryEditor.SetValue(Grid.RowProperty, 0);
-            this.secondaryEditor.SetValue(Grid.RowProperty, 0);
+            this.primaryBorder.SetValue(Grid.ColumnProperty, 0);
+            this.secondaryBorder.SetValue(Grid.ColumnProperty, 1);
+            this.primaryBorder.SetValue(Grid.RowProperty, 0);
+            this.secondaryBorder.SetValue(Grid.RowProperty, 0);
             this.primaryGridColumn.Width = new GridLength(splitRatio, GridUnitType.Star);
             this.secondaryGridColumn.Width = new GridLength(1.0 - splitRatio, GridUnitType.Star);
             this.primaryGridRow.Height = new GridLength(1, GridUnitType.Star);
@@ -98,10 +105,10 @@ namespace Inki.View
         /// </summary>
         private void setUpDownSplitLayout(double splitRatio)
         {
-            this.primaryEditor.SetValue(Grid.ColumnProperty, 0);
-            this.secondaryEditor.SetValue(Grid.ColumnProperty, 0);
-            this.primaryEditor.SetValue(Grid.RowProperty, 0);
-            this.secondaryEditor.SetValue(Grid.RowProperty, 1);
+            this.primaryBorder.SetValue(Grid.ColumnProperty, 0);
+            this.secondaryBorder.SetValue(Grid.ColumnProperty, 0);
+            this.primaryBorder.SetValue(Grid.RowProperty, 0);
+            this.secondaryBorder.SetValue(Grid.RowProperty, 1);
             this.primaryGridColumn.Width = new GridLength(1, GridUnitType.Star);
             this.secondaryGridColumn.Width = new GridLength(0, GridUnitType.Star);
             this.primaryGridRow.Height = new GridLength(splitRatio, GridUnitType.Star);
@@ -113,10 +120,10 @@ namespace Inki.View
         /// </summary>
         private void closeSplitLayout()
         {
-            this.primaryEditor.SetValue(Grid.ColumnProperty, 0);
-            this.secondaryEditor.SetValue(Grid.ColumnProperty, 1);
-            this.primaryEditor.SetValue(Grid.RowProperty, 0);
-            this.secondaryEditor.SetValue(Grid.RowProperty, 1);
+            this.primaryBorder.SetValue(Grid.ColumnProperty, 0);
+            this.secondaryBorder.SetValue(Grid.ColumnProperty, 1);
+            this.primaryBorder.SetValue(Grid.RowProperty, 0);
+            this.secondaryBorder.SetValue(Grid.RowProperty, 1);
             this.primaryGridColumn.Width = new GridLength(1, GridUnitType.Star);
             this.secondaryGridColumn.Width = new GridLength(0, GridUnitType.Star);
             this.primaryGridRow.Height = new GridLength(1, GridUnitType.Star);
@@ -154,70 +161,31 @@ namespace Inki.View
 
         #endregion
 
-        private async void primaryEditor_FocusEngaged(Control sender, FocusEngagedEventArgs args)
-        {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("primary focused").ShowAsync();
-            /********  Test Code End  ********/
+        #region 分屏间切换处理
+
+        private void activatePrimaryCanvas() {
+            primaryBorder.BorderBrush = new SolidColorBrush(Colors.MediumVioletRed);
+            secondaryBorder.BorderBrush = new SolidColorBrush(Colors.Gray);
+            inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
         }
 
-        private async void secondaryEditor_FocusEngaged(Control sender, FocusEngagedEventArgs args)
+        private void activateSecondaryCanvas()
         {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("secondary focused").ShowAsync();
-            /********  Test Code End  ********/
+            primaryBorder.BorderBrush = new SolidColorBrush(Colors.Gray);
+            secondaryBorder.BorderBrush = new SolidColorBrush(Colors.MediumVioletRed);
+            inkToolBar.TargetInkCanvas = this.secondaryEditorPage.inkCanvas;
         }
 
-        private async void primaryEditor_GotFocus(object sender, RoutedEventArgs e)
+        private void UnprocessedInput_PointerEntered(InkUnprocessedInput sender, PointerEventArgs args)
         {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("primary got focused").ShowAsync();
-            /********  Test Code End  ********/
+            activatePrimaryCanvas();
         }
 
-        private async void secondaryEditor_GotFocus(object sender, RoutedEventArgs e)
+        private void UnprocessedInput_PointerEntered1(InkUnprocessedInput sender, PointerEventArgs args)
         {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("secondary got focused").ShowAsync();
-            /********  Test Code End  ********/
+            activateSecondaryCanvas();
         }
 
-        private async void primaryEditor_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("primary pointer pressed").ShowAsync();
-            /********  Test Code End  ********/
-        }
-
-        private async void secondaryEditor_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("secondary pointer pressed").ShowAsync();
-            /********  Test Code End  ********/
-        }
-
-        private async void primaryEditor_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("primary tapped").ShowAsync();
-            /********  Test Code End  ********/
-        }
-
-        private async void secondaryEditor_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            /******** Test Code Start ********/
-            await new ConsoleDialog("secondary tapped").ShowAsync();
-            /********  Test Code End  ********/
-        }
-
-        private void primaryEditor_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
-        }
-
-        private void secondaryEditor_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            this.inkToolBar.TargetInkCanvas = this.secondaryEditorPage.inkCanvas;
-        }
+        #endregion
     }
 }

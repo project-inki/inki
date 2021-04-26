@@ -18,6 +18,7 @@
         <RelativePanel Grid.ColumnSpan="2">
             <InkToolbar x:Name="inkToolBar">
                 <!-- Test Start -->
+                <!--
                 <InkToolbarCustomPenButton>
                     <InkToolbarCustomPenButton.ConfigurationContent>
                         <InkToolbarPenConfigurationControl>
@@ -25,10 +26,12 @@
                         </InkToolbarPenConfigurationControl>
                     </InkToolbarCustomPenButton.ConfigurationContent>
                 </InkToolbarCustomPenButton>
+                -->
                 <!--  Test End  -->
             </InkToolbar>
             <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" IsSticky="True" RelativePanel.AlignRightWithPanel="True">
                 <!-- Test Start -->
+                <!--
                 <AppBarToggleButton Icon="Edit" Foreground="Aquamarine">
                     <Flyout>
                         <Button>abc</Button>
@@ -48,6 +51,7 @@
                         </Flyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
+                -->
                 <!--  Test End -->
                 <AppBarButton Icon="Save" Label="Save" Width="40">
                     <AppBarButton.KeyboardAccelerators>
@@ -144,10 +148,12 @@
                 <ColumnDefinition x:Name="primaryGridColumn" Width="*"/>
                 <ColumnDefinition x:Name="secondaryGridColumn" Width="0"/>
             </Grid.ColumnDefinitions>
-            <Frame x:Name="primaryEditor" Grid.Column="0" Grid.Row="0" 
-                   PointerEntered="primaryEditor_PointerEntered"/>
-            <Frame x:Name="secondaryEditor" Grid.Column="1" 
-                   PointerEntered="secondaryEditor_PointerEntered"/>
+            <Border x:Name="primaryBorder" Grid.Column="0" Grid.Row="0" BorderThickness="4" BorderBrush="MediumVioletRed" >
+                <Frame x:Name="primaryEditor"/>
+            </Border>
+            <Border x:Name="secondaryBorder" Grid.Column="1" Grid.Row="1" BorderThickness="4" BorderBrush="Gray">
+                <Frame x:Name="secondaryEditor"/>
+            </Border>
         </Grid>
     </Grid>
 </Page>
