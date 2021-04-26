@@ -41,13 +41,11 @@ namespace Inki.View
             this.slider.Value = this.editorLayout.splitRatio * 100;
             this.loadLayout();
 
-            /******** Test Code Start ********/
             primaryEditor.Navigate(typeof(EditorInkCanvasPage));
             secondaryEditor.Navigate(typeof(EditorInkCanvasPage));
             this.primaryEditorPage = (EditorInkCanvasPage)primaryEditor.Content;
             this.secondaryEditorPage = (EditorInkCanvasPage)secondaryEditor.Content;
             this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
-            /********  Test Code End  ********/
         }
 
         #region 分屏封装处理
@@ -210,6 +208,16 @@ namespace Inki.View
             /******** Test Code Start ********/
             await new ConsoleDialog("secondary tapped").ShowAsync();
             /********  Test Code End  ********/
+        }
+
+        private void primaryEditor_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
+        }
+
+        private void secondaryEditor_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            this.inkToolBar.TargetInkCanvas = this.secondaryEditorPage.inkCanvas;
         }
     }
 }
