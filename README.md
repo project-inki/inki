@@ -40,6 +40,22 @@ A powerful Notetaker, notebook PDF Editor of Next Generation on UWP platform.
   - Direct2X
 - https://github.com/Microsoft/Windows-appsample-coloringbook
   - Customize Erase Button
+- https://github.com/Microsoft/Windows-tutorials-inputs-and-devices/tree/master/GettingStarted-Ink
+  - Adding basic ink support
+  - Adding an ink toolbar
+  - Supporting handwriting recognition
+  - Supporting basic shape recognition
+  - Saving and loading ink
+- https://github.com/microsoft/Windows-tutorials-inputs-and-devices
+  - Digital Pen Button -> Selection Tool
+- https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/LowLatencyInput
+  - Low Latency Input
+- https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/BasicInput
+  - **Listen for events on XAML elements**: Use events on XAML elements to listen for various types of input, such as pointer pressed / released, pointer enter / exited, tap / double-tap, and right-tap / press-and-hold.
+  - **Retrieve properties about a pointer object**: Use a PointerPoint object to retrieve information common to all pointers (such as X/Y coordinates) as well as information specific to the type of input being used (such as mouse wheel information).
+  - **Query input capabilities for the system**: Use the KeyboardCapabilities, MouseCapabilities, and TouchCapabilities classes to determine what types of input are available on the current system.
+  - **Manipulate a XAML element**: Use the ManipulationMode property to register for specific manipulation events on XAML elements and react to them in order to move and rotate the element.
+  - **Manipulate an object using a GestureRecognizer**: Use an instance of a GestureRecognizer to move and rotate an object. This is useful if your app uses its own framework and, thus, cannot use the manipulation events on XAML elements.
 
 ### InkToolbar
 
@@ -64,8 +80,19 @@ A powerful Notetaker, notebook PDF Editor of Next Generation on UWP platform.
 
 - https://docs.microsoft.com/zh-cn/windows/uwp/design/input/touch-interactions
 
-## UI
+## WinUI
 
 - https://docs.microsoft.com/zh-cn/windows/uwp/design/controls-and-patterns/
 - https://docs.microsoft.com/zh-cn/windows/apps/winui/winui2/
 - https://github.com/Microsoft/Xaml-Controls-Gallery
+
+## Win2D
+
+- https://github.com/Microsoft/Win2D
+- http://microsoft.github.io/Win2D/html/Introduction.htm
+- http://microsoft.github.io/Win2D/WinUI3/html/Introduction.htm (Note: We plan to migrate to WinUI3 in the future)
+
+## User Custom Control
+
+- https://social.technet.microsoft.com/wiki/contents/articles/32828.uwp-how-to-create-and-use-custom-control.aspx
+- https://almirvuk.blogspot.com/2016/08/uwp-create-custom-ui-control.html
