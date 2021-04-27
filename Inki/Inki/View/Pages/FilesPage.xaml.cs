@@ -15,14 +15,14 @@ using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace Inki.View
+namespace Inki.View.Pages
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class EditorBlankPage : Page
+    public sealed partial class FilesPage : Page
     {
-        public EditorBlankPage()
+        public FilesPage()
         {
             this.InitializeComponent();
         }

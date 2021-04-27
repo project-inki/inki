@@ -126,22 +126,22 @@
     <Compile Include="Models\NotebookFileModel.cs" />
     <Compile Include="Models\NotebookInkModel.cs" />
     <Compile Include="Models\NotebookModel.cs" />
-    <Compile Include="View\EditorBlankPage.xaml.cs">
+    <Compile Include="View\Pages\EditorBlankPage.xaml.cs">
       <DependentUpon>EditorBlankPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditorInkCanvasPage.xaml.cs">
+    <Compile Include="View\Pages\EditorInkCanvasPage.xaml.cs">
       <DependentUpon>EditorInkCanvasPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EditorNavigationPage.xaml.cs">
+    <Compile Include="View\Pages\EditorNavigationPage.xaml.cs">
       <DependentUpon>EditorNavigationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FilesPage.xaml.cs">
+    <Compile Include="View\Pages\FilesPage.xaml.cs">
       <DependentUpon>FilesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Helper\ConsoleDialog.xaml.cs">
       <DependentUpon>ConsoleDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SettingsPage.xaml.cs">
+    <Compile Include="View\Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,19 +176,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\EditorBlankPage.xaml">
+    <Page Include="View\Pages\EditorBlankPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditorInkCanvasPage.xaml">
+    <Page Include="View\Pages\EditorInkCanvasPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EditorNavigationPage.xaml">
+    <Page Include="View\Pages\EditorNavigationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\FilesPage.xaml">
+    <Page Include="View\Pages\FilesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -196,7 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SettingsPage.xaml">
+    <Page Include="View\Pages\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
