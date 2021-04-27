@@ -8,8 +8,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     NavigationCacheMode="Required">
-    <user_control:EditorPageUnitView x:Name="pageUnitView"
-                                     x:FieldModifier="public" >
-        
-    </user_control:EditorPageUnitView>
+    <ScrollViewer x:Name="scrollViewer"
+                  ZoomMode="Enabled" 
+                  MinZoomFactor="0.2"
+                  MaxZoomFactor="20" 
+                  VerticalScrollMode="Enabled"
+                  HorizontalScrollMode="Enabled"
+                  VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Visible">
+        <user_control:EditorPageUnitView x:Name="pageUnitView"
+                                         x:FieldModifier="public"
+                                         Width="600" Height="1000">
+        </user_control:EditorPageUnitView>
+    </ScrollViewer>
 </Page>
