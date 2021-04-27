@@ -8,11 +8,22 @@
     mc:Ignorable="d"
     Background="Beige"
     NavigationCacheMode="Required">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <InkCanvas x:Name="inkCanvas" x:FieldModifier="public" Grid.Row="0"/>
-    </Grid>
+    <RelativePanel>
+        <TextBlock RelativePanel.AlignLeftWithPanel="True" 
+                   RelativePanel.AlignRightWithPanel="True" 
+                   RelativePanel.AlignTopWithPanel="True" 
+                   RelativePanel.AlignBottomWithPanel="True" 
+                   TextAlignment="Center">
+            ABC
+        </TextBlock>
+        <Grid RelativePanel.AlignLeftWithPanel="True" 
+              RelativePanel.AlignRightWithPanel="True" 
+              RelativePanel.AlignTopWithPanel="True" 
+              RelativePanel.AlignBottomWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <InkCanvas x:Name="inkCanvas" x:FieldModifier="public" Grid.Row="0"/>
+        </Grid>
+    </RelativePanel>
 </Page>
