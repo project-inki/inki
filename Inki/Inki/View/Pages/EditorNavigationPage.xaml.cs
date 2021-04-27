@@ -48,11 +48,11 @@ namespace Inki.View.Pages
             this.primaryEditorPage = (EditorSinglePage)primaryEditor.Content;
             this.secondaryEditorPage = (EditorSinglePage)secondaryEditor.Content;
 
-            this.primaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered;
-            this.secondaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered1;
+            this.primaryEditorPage.pageUnitView.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered;
+            this.secondaryEditorPage.pageUnitView.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered1;
 
             // InkToolBar初始化绑定到Primary (Border颜色已在Xaml中设置)
-            this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
+            this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.pageUnitView.inkCanvas;
         }
 
         #region 分屏封装处理
@@ -166,14 +166,14 @@ namespace Inki.View.Pages
         private void activatePrimaryCanvas() {
             primaryBorder.BorderBrush = new SolidColorBrush(Colors.MediumVioletRed);
             secondaryBorder.BorderBrush = new SolidColorBrush(Colors.Gray);
-            inkToolBar.TargetInkCanvas = this.primaryEditorPage.inkCanvas;
+            inkToolBar.TargetInkCanvas = this.primaryEditorPage.pageUnitView.inkCanvas;
         }
 
         private void activateSecondaryCanvas()
         {
             primaryBorder.BorderBrush = new SolidColorBrush(Colors.Gray);
             secondaryBorder.BorderBrush = new SolidColorBrush(Colors.MediumVioletRed);
-            inkToolBar.TargetInkCanvas = this.secondaryEditorPage.inkCanvas;
+            inkToolBar.TargetInkCanvas = this.secondaryEditorPage.pageUnitView.inkCanvas;
         }
 
         private void UnprocessedInput_PointerEntered(InkUnprocessedInput sender, PointerEventArgs args)

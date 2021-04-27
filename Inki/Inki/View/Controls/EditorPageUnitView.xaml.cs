@@ -17,11 +17,13 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Inki.View.Controls
 {
-    public sealed partial class EditorInkCanvasUnitView : UserControl
+    public sealed partial class EditorPageUnitView : UserControl
     {
-        public EditorInkCanvasUnitView()
+
+        public EditorPageUnitView()
         {
             this.InitializeComponent();
+            
         }
     }
 }

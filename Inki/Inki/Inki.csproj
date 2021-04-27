@@ -126,8 +126,8 @@
     <Compile Include="Models\NotebookFileModel.cs" />
     <Compile Include="Models\NotebookInkModel.cs" />
     <Compile Include="Models\NotebookModel.cs" />
-    <Compile Include="View\Controls\EditorInkCanvasUnitView.xaml.cs">
-      <DependentUpon>EditorInkCanvasUnitView.xaml</DependentUpon>
+    <Compile Include="View\Controls\EditorPageUnitView.xaml.cs">
+      <DependentUpon>EditorPageUnitView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\EditorBlankPage.xaml.cs">
       <DependentUpon>EditorBlankPage.xaml</DependentUpon>
@@ -179,7 +179,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Controls\EditorInkCanvasUnitView.xaml">
+    <Page Include="View\Controls\EditorPageUnitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
