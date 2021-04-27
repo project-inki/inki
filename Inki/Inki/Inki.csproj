@@ -126,11 +126,14 @@
     <Compile Include="Models\NotebookFileModel.cs" />
     <Compile Include="Models\NotebookInkModel.cs" />
     <Compile Include="Models\NotebookModel.cs" />
+    <Compile Include="View\Controls\EditorInkCanvasUnitView.xaml.cs">
+      <DependentUpon>EditorInkCanvasUnitView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\EditorBlankPage.xaml.cs">
       <DependentUpon>EditorBlankPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\EditorInkCanvasPage.xaml.cs">
-      <DependentUpon>EditorInkCanvasPage.xaml</DependentUpon>
+    <Compile Include="View\Pages\EditorSinglePage.xaml.cs">
+      <DependentUpon>EditorSinglePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\EditorNavigationPage.xaml.cs">
       <DependentUpon>EditorNavigationPage.xaml</DependentUpon>
@@ -176,11 +179,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Controls\EditorInkCanvasUnitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\EditorBlankPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\EditorInkCanvasPage.xaml">
+    <Page Include="View\Pages\EditorSinglePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

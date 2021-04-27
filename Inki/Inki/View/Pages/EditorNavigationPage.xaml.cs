@@ -32,8 +32,8 @@ namespace Inki.View.Pages
 
         public EditorLayoutModel editorLayout;
 
-        public EditorInkCanvasPage primaryEditorPage;
-        public EditorInkCanvasPage secondaryEditorPage;
+        public EditorSinglePage primaryEditorPage;
+        public EditorSinglePage secondaryEditorPage;
 
         public EditorNavigationPage()
         {
@@ -42,11 +42,11 @@ namespace Inki.View.Pages
             this.slider.Value = this.editorLayout.splitRatio * 100;
             this.loadLayout();
 
-            primaryEditor.Navigate(typeof(EditorInkCanvasPage));
-            secondaryEditor.Navigate(typeof(EditorInkCanvasPage));
+            primaryEditor.Navigate(typeof(EditorSinglePage));
+            secondaryEditor.Navigate(typeof(EditorSinglePage));
 
-            this.primaryEditorPage = (EditorInkCanvasPage)primaryEditor.Content;
-            this.secondaryEditorPage = (EditorInkCanvasPage)secondaryEditor.Content;
+            this.primaryEditorPage = (EditorSinglePage)primaryEditor.Content;
+            this.secondaryEditorPage = (EditorSinglePage)secondaryEditor.Content;
 
             this.primaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered;
             this.secondaryEditorPage.inkCanvas.InkPresenter.UnprocessedInput.PointerEntered += UnprocessedInput_PointerEntered1;

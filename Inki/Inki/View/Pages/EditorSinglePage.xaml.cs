@@ -20,9 +20,9 @@ namespace Inki.View.Pages
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class EditorInkCanvasPage : Page
+    public sealed partial class EditorSinglePage : Page
     {
-        public EditorInkCanvasPage()
+        public EditorSinglePage()
         {
             this.InitializeComponent();
         }
