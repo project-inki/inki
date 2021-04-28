@@ -14,6 +14,13 @@
         In formal versions, we will use the control:canvas to implement custom background.
     -->
     <RelativePanel>
+        <InkCanvas x:Name="inkCanvas" 
+                   RelativePanel.AlignLeftWithPanel="True" 
+                   RelativePanel.AlignRightWithPanel="True" 
+                   RelativePanel.AlignTopWithPanel="True" 
+                   RelativePanel.AlignBottomWithPanel="True"
+                   x:FieldModifier="public"
+                   Canvas.ZIndex="1"/>
         <canvas:CanvasControl
             RelativePanel.AlignLeftWithPanel="True" 
             RelativePanel.AlignRightWithPanel="True" 
@@ -21,13 +28,8 @@
             RelativePanel.AlignBottomWithPanel="True"
             x:Name="background2DCanvas"
             x:FieldModifier="public"
-            ClearColor="Beige">
+            ClearColor="Beige"
+            Canvas.ZIndex="0">
         </canvas:CanvasControl>
-        <InkCanvas x:Name="inkCanvas" 
-                   RelativePanel.AlignLeftWithPanel="True" 
-                   RelativePanel.AlignRightWithPanel="True" 
-                   RelativePanel.AlignTopWithPanel="True" 
-                   RelativePanel.AlignBottomWithPanel="True"
-                   x:FieldModifier="public"/>
     </RelativePanel>
 </UserControl>

@@ -187,5 +187,47 @@ namespace Inki.View.Pages
         }
 
         #endregion
+
+
+        // TODO: 下面的内容和XAML中的这个模块全部分装起来，然后要专门存储drawingAttributes，方便一开始显示/存储/etc.
+        private void PenPressureSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (inkToolBar.TargetInkCanvas != null)
+            {
+                InkDrawingAttributes drawingAttributes = inkToolBar.TargetInkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+                drawingAttributes.IgnorePressure = !((ToggleSwitch)sender).IsOn;
+                inkToolBar.TargetInkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+            }
+        }
+
+        private void PenSmoothSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (inkToolBar.TargetInkCanvas != null)
+            {
+                InkDrawingAttributes drawingAttributes = inkToolBar.TargetInkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+                drawingAttributes.FitToCurve = ((ToggleSwitch)sender).IsOn;
+                inkToolBar.TargetInkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+            }
+        }
+
+        private void PenHighlightSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (inkToolBar.TargetInkCanvas != null)
+            {
+                InkDrawingAttributes drawingAttributes = inkToolBar.TargetInkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+                drawingAttributes.DrawAsHighlighter = ((ToggleSwitch)sender).IsOn;
+                inkToolBar.TargetInkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+            }
+        }
+
+        private void PenTiltSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (inkToolBar.TargetInkCanvas != null)
+            {
+                InkDrawingAttributes drawingAttributes = inkToolBar.TargetInkCanvas.InkPresenter.CopyDefaultDrawingAttributes();
+                drawingAttributes.IgnoreTilt = !((ToggleSwitch)sender).IsOn;
+                inkToolBar.TargetInkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
+            }
+        }
     }
 }

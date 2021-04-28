@@ -1,0 +1,147 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="InkToolbarPenConfigurationControl">
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="InkToolbarPenConfigurationControl">
+                    <Grid x:Name="RootElement" MinWidth="320">
+                        <Grid.ChildrenTransitions>
+                            <EntranceThemeTransition />
+                        </Grid.ChildrenTransitions>
+
+                        <Grid.Resources>
+                            <Style x:Key="FlyoutStrokeWidthSelectorStyle" TargetType="Slider">
+                                <Setter Property="IsThumbToolTipEnabled" Value="true" />
+                            </Style>
+                        </Grid.Resources>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="12" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="PenColorPaletteTitle" Grid.Row="1" Grid.Column="0" Padding="12,0,12,0"
+                                    Style="{ThemeResource BodyTextBlockStyle}" HighContrastAdjustment="None" Text="Colors" />
+                        <!-- Color palette -->
+                        <!-- Note: ItemsSource and selection are set in code-behind -->
+                        <GridView x:Name="PenColorPalette" Grid.Row="3" Grid.Column="0" Padding="4,0,4,2"
+                                    Background="{TemplateBinding Background}" >
+                            <GridView.Resources>
+                                <DataTemplate x:Key="HighContrastItemTemplate">
+                                    <!-- Keep in sync with the GridView ItemTemplate, down below -->
+                                    <Ellipse Margin="8,8,8,8" UseLayoutRounding="false" Fill="{Binding}"
+                                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                Stroke="{ThemeResource InkToolbarFlyoutItemBorderSelectedThemeBrush}"
+                                                StrokeThickness="1"/>
+                                </DataTemplate>
+                            </GridView.Resources>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="6" />
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="Padding" Value="0" />
+                                    <Setter Property="MinHeight" Value="52" />
+                                    <Setter Property="MinWidth" Value="52" />
+                                    <Setter Property="Height" Value="52" />
+                                    <Setter Property="Width" Value="52" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                                    <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="GridViewItem">
+                                                <Grid>
+                                                    <!--
+                                                        GridViewItem visual states are documented here:
+                                                        https://msdn.microsoft.com/en-us/library/windows/apps/mt299127.aspx
+                                                    -->
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal" />
+                                                            <VisualState x:Name="PointerOver">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ItemContent.Margin" Value="-2,-2,-2,-2" />
+                                                                    <Setter Target="ItemBorder.Margin" Value="2,2,2,2" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ItemContent.Margin" Value="-2,-2,-2,-2" />
+                                                                    <Setter Target="ItemBorder.Stroke" Value="{ThemeResource InkToolbarFlyoutItemBorderPressedThemeBrush}" />
+                                                                    <Setter Target="ItemBorder.Margin" Value="2,2,2,2" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Selected">
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="ItemContent.Margin" Value="2,2,2,2" />
+                                                                    <Setter Target="ItemBorder.Stroke" Value="{ThemeResource InkToolbarFlyoutItemBorderSelectedThemeBrush}" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                        <VisualStateGroup x:Name="FocusStates">
+                                                            <VisualState x:Name="Focused" />
+                                                            <VisualState x:Name="Unfocused" />
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <Ellipse x:Name="ItemBorder"
+                                                             Margin="6,6,6,6" UseLayoutRounding="false"
+                                                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                             Fill="Transparent" Stroke="Transparent" StrokeThickness="2" />
+                                                    <ContentPresenter x:Name="ItemContent" UseLayoutRounding="false" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GridView.ItemContainerStyle>
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Keep in sync with HighContrastItemTemplate item template above -->
+                                    <Ellipse Margin="8,8,8,8" UseLayoutRounding="false"
+                                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                Fill="{Binding}" />
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                        <!-- StrokeWidth -->
+                        <TextBlock x:Name="PenStrokeWidthTitle" Grid.Row="5" Grid.Column="0" Padding="12,0,12,0"
+                                    VerticalAlignment="Center" Style="{ThemeResource BodyTextBlockStyle}"
+                                    Text="Size" HighContrastAdjustment="None" />
+                        <Grid x:Name="StrokePreviewGrid" Grid.Row="6" UseLayoutRounding="false"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              MinHeight="24">
+                            <Canvas x:Name="StrokePreviewCanvas" Margin="12, 0, 12, 4" />
+
+                        </Grid>
+                        <Slider x:Name="PenStrokeWidthSlider"
+                                Grid.Row="7" Grid.Column="0" Width="296" Height="44" Margin="12,0,12,0" StepFrequency="0.1"
+                                HorizontalAlignment="Stretch"
+                                Minimum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PenButton.MinStrokeWidth}"
+                                Maximum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PenButton.MaxStrokeWidth}"
+                                Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PenButton.SelectedStrokeWidth, Mode=TwoWay}"
+                                Style="{StaticResource FlyoutStrokeWidthSelectorStyle}" />
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Inki.View.Pages"
+    xmlns:models="using:Inki.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -17,7 +18,80 @@
         </Grid.RowDefinitions>
         <RelativePanel Grid.ColumnSpan="2">
             <InkToolbar x:Name="inkToolBar">
-                
+                <InkToolbar.Resources>
+                    <BrushCollection x:Key="CalligraphicPenPalette">
+                        <SolidColorBrush Color="#000000"/>
+                        <SolidColorBrush Color="#FFFFFF"/>
+                        <SolidColorBrush Color="#D1D3D4"/>
+                        <SolidColorBrush Color="#A7A9AC"/>
+                        <SolidColorBrush Color="#808285"/>
+                        <SolidColorBrush Color="#58595B"/>
+                        <SolidColorBrush Color="#B31564"/>
+                        <SolidColorBrush Color="#E61B1B"/>
+                        <SolidColorBrush Color="#FF5500"/>
+                        <SolidColorBrush Color="#FFAA00"/>
+                        <SolidColorBrush Color="#FFCE00"/>
+                        <SolidColorBrush Color="#FFE600"/>
+                        <SolidColorBrush Color="#A2E61B"/>
+                        <SolidColorBrush Color="#26E600"/>
+                        <SolidColorBrush Color="#008055"/>
+                        <SolidColorBrush Color="#00AACC"/>
+                        <SolidColorBrush Color="#004DE6"/>
+                        <SolidColorBrush Color="#3D00B8"/>
+                        <SolidColorBrush Color="#6600CC"/>
+                        <SolidColorBrush Color="#600080"/>
+                        <SolidColorBrush Color="#F7D7C4"/>
+                        <SolidColorBrush Color="#BB9167"/>
+                        <SolidColorBrush Color="#8E562E"/>
+                        <SolidColorBrush Color="#613D30"/>
+                        <SolidColorBrush Color="#FF80FF"/>
+                        <SolidColorBrush Color="#FFC680"/>
+                        <SolidColorBrush Color="#FFFF80"/>
+                        <SolidColorBrush Color="#80FF9E"/>
+                        <SolidColorBrush Color="#80D6FF"/>
+                        <SolidColorBrush Color="#BCB3FF"/>
+                    </BrushCollection>
+                    <models:CalligraphicPen x:Key="CalligraphicPen"/>
+                </InkToolbar.Resources>
+                <InkToolbarBallpointPenButton MinStrokeWidth="0.1"
+                                              MaxStrokeWidth="64"/>
+                <InkToolbarHighlighterButton MinStrokeWidth="5"
+                                              MaxStrokeWidth="64"/>
+                <InkToolbarCustomPenButton x:Name="calligraphyPen"
+                                           CustomPen="{StaticResource CalligraphicPen}"
+                                           Palette="{StaticResource CalligraphicPenPalette}"
+                                           SelectedBrushIndex="0"
+                                           ToolTipService.ToolTip="Calligraphy pen"
+                                           MinStrokeWidth="0.1">
+                    <Border>
+                        <Grid>
+                            <TextBlock AutomationProperties.AccessibilityView="Raw" FontFamily="Segoe MDL2 Assets" Text="&#xEDFB;" Canvas.ZIndex="1"/>
+                            <TextBlock AutomationProperties.AccessibilityView="Raw" FontFamily="Segoe MDL2 Assets" Text="&#xF0C7;" 
+                                        Foreground="{x:Bind calligraphyPen.SelectedBrush, Mode=OneWay}" Canvas.ZIndex="0"/>
+                        </Grid>
+                    </Border>
+                    <InkToolbarCustomPenButton.ConfigurationContent>
+                        <StackPanel>
+                            <TextBlock x:Name="PenExtraSettingsTitle" Padding="12,8,12,0"
+                                    Style="{ThemeResource BodyTextBlockStyle}" HighContrastAdjustment="None" Text="Settings" />
+                            <Grid Padding="12,8,12,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+                                </Grid.RowDefinitions>
+                                <ToggleSwitch x:Name="PenPressureSwitch" HighContrastAdjustment="None" Toggled="PenPressureSwitch_Toggled" Grid.Column="0" Grid.Row="0" IsOn="True">Pressure</ToggleSwitch>
+                                <ToggleSwitch x:Name="PenSmoothSwitch" HighContrastAdjustment="None" Toggled="PenSmoothSwitch_Toggled" Grid.Column="1" Grid.Row="0" IsOn="True">Smooth</ToggleSwitch>
+                                <ToggleSwitch x:Name="PenHighlightSwitch" HighContrastAdjustment="None" Toggled="PenHighlightSwitch_Toggled" Grid.Column="0" Grid.Row="1" IsOn="False">Highlight</ToggleSwitch>
+                                <ToggleSwitch x:Name="PenTiltSwitch" HighContrastAdjustment="None" Toggled="PenTiltSwitch_Toggled" Grid.Column="1" Grid.Row="1" IsOn="True">Tilt</ToggleSwitch>
+                            </Grid>
+                            <InkToolbarPenConfigurationControl/>
+                        </StackPanel>
+                    </InkToolbarCustomPenButton.ConfigurationContent>
+                </InkToolbarCustomPenButton>
             </InkToolbar>
             <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" IsSticky="True" RelativePanel.AlignRightWithPanel="True">
                 <AppBarButton Icon="Save" Label="Save" Width="40">
