@@ -190,6 +190,8 @@ namespace Inki.View.Pages
 
 
         // TODO: 下面的内容和XAML中的这个模块全部分装起来，然后要专门存储drawingAttributes，方便一开始显示/存储/etc.
+        // TODO: 记得要处理切换到这个工具的情况（设置好ToggleButton的值），尝试封装到一起。
+        // TODO: 思考了一下，原来的工具就不要这个功能了，把新的customInkButton封装一下就好。
         private void PenPressureSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             if (inkToolBar.TargetInkCanvas != null)
