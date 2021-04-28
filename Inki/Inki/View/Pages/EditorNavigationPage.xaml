@@ -17,42 +17,9 @@
         </Grid.RowDefinitions>
         <RelativePanel Grid.ColumnSpan="2">
             <InkToolbar x:Name="inkToolBar">
-                <!-- Test Start -->
-                <!--
-                <InkToolbarCustomPenButton>
-                    <InkToolbarCustomPenButton.ConfigurationContent>
-                        <InkToolbarPenConfigurationControl>
-
-                        </InkToolbarPenConfigurationControl>
-                    </InkToolbarCustomPenButton.ConfigurationContent>
-                </InkToolbarCustomPenButton>
-                -->
-                <!--  Test End  -->
+                
             </InkToolbar>
             <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" IsSticky="True" RelativePanel.AlignRightWithPanel="True">
-                <!-- Test Start -->
-                <!--
-                <AppBarToggleButton Icon="Edit" Foreground="Aquamarine">
-                    <Flyout>
-                        <Button>abc</Button>
-                    </Flyout>
-                </AppBarToggleButton>
-                <AppBarElementContainer>
-                    <StackPanel>
-                        <Button>abc</Button>
-                    </StackPanel>
-                </AppBarElementContainer>
-                <AppBarButton Icon="Edit" Foreground="Aqua">
-                    <AppBarButton.Flyout>
-                        <Flyout>
-                            <StackPanel>
-                                
-                            </StackPanel>
-                        </Flyout>
-                    </AppBarButton.Flyout>
-                </AppBarButton>
-                -->
-                <!--  Test End -->
                 <AppBarButton Icon="Save" Label="Save" Width="40">
                     <AppBarButton.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="S"/>

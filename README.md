@@ -34,7 +34,7 @@ A powerful Notetaker, notebook PDF Editor of Next Generation on UWP platform.
   - Scenario 7 - Scroll, Zoom
   - Scenario 8 - CoreWetStrokeUpdateSource
   - Scenario 9 - Replay
-  - Scenario 10 - Custome Pen
+  - Scenario 10 - Custom Pen
   - Scenario 11 - High Contrast
 - https://github.com/microsoft/Windows-universal-samples/tree/master/Samples/ComplexInk
   - Direct2X
