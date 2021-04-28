@@ -9,7 +9,7 @@
   <Identity
     Name="25ed404d-cb91-4d0d-bad6-4de702cadad7"
     Publisher="CN=JeffersonQin"
-    Version="1.0.0.0" />
+    Version="0.1.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="25ed404d-cb91-4d0d-bad6-4de702cadad7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

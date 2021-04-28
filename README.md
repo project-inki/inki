@@ -96,3 +96,13 @@ A powerful Notetaker, notebook PDF Editor of Next Generation on UWP platform.
 
 - https://social.technet.microsoft.com/wiki/contents/articles/32828.uwp-how-to-create-and-use-custom-control.aspx
 - https://almirvuk.blogspot.com/2016/08/uwp-create-custom-ui-control.html
+
+## Packing UWP
+
+- https://docs.microsoft.com/en-us/windows/msix/package/packaging-uwp-apps#before-packaging-your-app
+
+## Customize System Control
+
+- https://stackoverflow.com/questions/61604783/uwp-remove-size-slider-from-inktoolbarpenbutton
+
+Path: `C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\<version_code>\Generic\generic.xaml`
