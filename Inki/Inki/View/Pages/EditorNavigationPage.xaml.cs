@@ -53,6 +53,7 @@ namespace Inki.View.Pages
 
             // InkToolBar初始化绑定到Primary (Border颜色已在Xaml中设置)
             this.inkToolBar.TargetInkCanvas = this.primaryEditorPage.pageUnitView.inkCanvas;
+
         }
 
         #region 分屏封装处理
@@ -230,6 +231,16 @@ namespace Inki.View.Pages
                 drawingAttributes.IgnoreTilt = !((ToggleSwitch)sender).IsOn;
                 inkToolBar.TargetInkCanvas.InkPresenter.UpdateDefaultDrawingAttributes(drawingAttributes);
             }
+        }
+
+        private async void calligraphyPen_Click(object sender, RoutedEventArgs e)
+        {
+//            new ConsoleDialog("Calligraphy Pen Button Clicked").ShowAsync();
+        }
+
+        private async void inkToolBar_InkDrawingAttributesChanged(InkToolbar sender, object args)
+        {
+            
         }
     }
 }

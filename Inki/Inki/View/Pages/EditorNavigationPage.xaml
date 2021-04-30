@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <RelativePanel Grid.ColumnSpan="2">
-            <InkToolbar x:Name="inkToolBar">
+            <InkToolbar x:Name="inkToolBar" InkDrawingAttributesChanged="inkToolBar_InkDrawingAttributesChanged">
                 <InkToolbar.Resources>
                     <BrushCollection x:Key="CalligraphicPenPalette">
                         <SolidColorBrush Color="#000000"/>
@@ -62,7 +62,8 @@
                                            Palette="{StaticResource CalligraphicPenPalette}"
                                            SelectedBrushIndex="0"
                                            ToolTipService.ToolTip="Calligraphy pen"
-                                           MinStrokeWidth="0.1">
+                                           MinStrokeWidth="0.1"
+                                           Click="calligraphyPen_Click">
                     <Border>
                         <Grid>
                             <TextBlock AutomationProperties.AccessibilityView="Raw" FontFamily="Segoe MDL2 Assets" Text="&#xEDFB;" Canvas.ZIndex="1"/>
@@ -88,7 +89,7 @@
                                 <ToggleSwitch x:Name="PenHighlightSwitch" HighContrastAdjustment="None" Toggled="PenHighlightSwitch_Toggled" Grid.Column="0" Grid.Row="1" IsOn="False">Highlight</ToggleSwitch>
                                 <ToggleSwitch x:Name="PenTiltSwitch" HighContrastAdjustment="None" Toggled="PenTiltSwitch_Toggled" Grid.Column="1" Grid.Row="1" IsOn="True">Tilt</ToggleSwitch>
                             </Grid>
-                            <InkToolbarPenConfigurationControl/>
+                            <InkToolbarPenConfigurationControl x:Name="penConfigurationControl" />
                         </StackPanel>
                     </InkToolbarCustomPenButton.ConfigurationContent>
                 </InkToolbarCustomPenButton>
